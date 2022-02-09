@@ -1,0 +1,83 @@
+############################################################
+#
+# 网关 zuul
+# web访问端口号  约定：7070
+#
+############################################################
+server:
+  port: 7070
+  tomcat:
+    uri-encoding: UTF-8
+
+############################################################
+#
+# 配置项目信息
+#
+############################################################
+spring:
+  application:
+    name: springcloud-zuul-server
+  redis:
+    database: 0
+    host: 192.168.64.131
+    port: 6379
+    password: 123456
+  cloud:
+    config:
+      label: master
+      name: zuul
+      profile: prod
+#      uri: http://192.168.64.1:7080
+      discovery:
+        enabled: true
+        service-id: springcloud-config
+  rabbitmq:
+    host: 192.168.64.131
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: dongruan-news
+
+############################################################
+#
+# eureka client 配置信息
+#
+############################################################
+eureka:
+  # 自定义 eureka server 的信息
+  server:
+    hostname: eureka
+    port: 7000
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-cluster-7001:7001/eureka/,http://eureka-cluster-7002:7002/eureka/,http://eureka-cluster-7003:7003/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 3      # 调整心跳时间
+    lease-expiration-duration-in-seconds: 5   # eureka距离最近一次的心跳，等待剔除的时间，超过则剔除
+
+# 路由规则
+zuul:
+  routes:
+    # 由于路由id和微服务id相同，那么转发配置可以简化
+    service-article: /service-article/**  # 配置的微服务路由id，微服务实例id
+#      path: /service-article/**     # 请求路径(前缀)，匹配规则：localhost:6000/article-service/abc
+#      service-id: service-article   # 微服务实例id
+#      url: http://192.168.64.1:8001   # 转发请求到指定微服务的ip地址
+  prefix: /api  # 前缀
+
+#  http://[网关地址]:[端口号]/[前缀]/[微服务id]/[请求路径]
+
+
+# 开启动态刷新的路径请求
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+
+
+
+
+

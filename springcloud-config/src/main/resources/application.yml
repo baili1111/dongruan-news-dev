@@ -1,0 +1,59 @@
+############################################################
+#
+# 配置服务Config
+# web访问端口号  约定：7080
+#
+############################################################
+server:
+  port: 7080
+  tomcat:
+    uri-encoding: UTF-8
+
+
+############################################################
+#
+# 配置项目信息
+#
+############################################################
+spring:
+  application:
+    name: springcloud-config
+  # 配置Config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/baililearn/dongruan-news-config.git
+  rabbitmq:
+    host: 192.168.64.131
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: dongruan-news
+
+
+############################################################
+#
+# eureka client 配置信息
+#
+############################################################
+eureka:
+  # 自定义 eureka server 的信息
+  server:
+    hostname: eureka
+    port: 7000
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-cluster-7001:7001/eureka/,http://eureka-cluster-7002:7002/eureka/,http://eureka-cluster-7003:7003/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 3      # 调整心跳时间
+    lease-expiration-duration-in-seconds: 5   # eureka距离最近一次的心跳，等待剔除的时间，超过则剔除
+
+# 开启bus动态刷新的路径请求
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

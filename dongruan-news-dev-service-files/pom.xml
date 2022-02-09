@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>dongruan-news-dev</artifactId>
+		<groupId>com.dongruan</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<!--
+		dongruan-news-dev-service-files:
+	    文件服务，文件相关操作都在此服务中进行，比如文件上传，文件读取
+	    fastdfs,oss,gridfs
+	 -->
+	<artifactId>dongruan-news-dev-service-files</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.dongruan</groupId>
+			<artifactId>dongruan-news-dev-service-api</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+
+		<!-- 文件上传fdfs工具 -->
+		<dependency>
+			<groupId>com.github.tobato</groupId>
+			<artifactId>fastdfs-client</artifactId>
+		</dependency>
+
+	</dependencies>
+
+</project>

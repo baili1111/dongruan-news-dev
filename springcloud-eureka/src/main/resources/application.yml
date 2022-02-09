@@ -1,0 +1,41 @@
+############################################################
+#
+# eureka 注册中心
+# web访问端口号  约定：7000
+#
+############################################################
+server:
+  port: 7000
+  tomcat:
+    uri-encoding: UTF-8
+
+############################################################
+#
+# 配置项目信息
+#
+############################################################
+spring:
+  application:
+    name: springcloud-eureka
+
+
+############################################################
+#
+# eureka 项目信息
+#
+############################################################
+eureka:
+  instance:
+    #    hostname: localhost   # eureka-server实例
+    hostname: eureka    # 也可以通过switchHost配置
+  client:
+    # 是否要把当前server注册（都行）
+    register-with-eureka: false
+    # 从注册中心查询检索服务实例，server的话没必要，直接false
+    fetch-registry: false
+    service-url:
+      # 单实例配置自己的服务地址，高可用则配置其他服务的地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: false   # 关闭eureka的自我保护功能
+    eviction-interval-timer-in-ms: 5000   # 清理无效节点的时间，缩短一点，默认60s
