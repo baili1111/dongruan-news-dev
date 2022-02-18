@@ -62,8 +62,7 @@
 
     ​	项目入口网关
 
-    
+    ![QQ截图20220218220201](https://user-images.githubusercontent.com/86520979/154696758-b9529d89-2364-456c-b1ca-45ef3c2e1959.png)
 
-    
 
-![image-20220218214445857](C:\Users\zhu\Desktop\1\dongruan-news-dev\README.assets\image-20220218214445857.png)
+   
