@@ -72,4 +72,6 @@
 - 修改mongoDB配置
 - 登录使用了腾讯云的短信服务，可以直接注释掉
 - 文件服务使用的是阿里的OSS服务，需要修改配置文件中的key
+common模块里面的resources的aliyun.properties,tencentyun.properties
+
 
